@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Level</title>
+
+  </head>
+  <body>
+    <div class="nav-bar"></div>
+
+    <div id=app>
+
+        <div class="level-app">
+            <div class="level-image">
+                <img v-bind:src="image">
+            </div>
+
+            <div class="level-info">
+                <h1>Level</h1>
+                <div class="text-area">
+                    <p v-show="!level">Loading..</p>
+                    <p v-show="level">{{ level }}</p>
+                </div>
+                <button @click="loadData">Refresh</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src=main.js></script>
+  </body>
+</html>
