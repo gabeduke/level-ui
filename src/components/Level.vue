@@ -10,7 +10,7 @@
               <p v-show="!level">Fetching level..</p>
               <p v-show="level">{{ level }}</p>
           </div>
-          <button @click="loadData">Refresh</button>
+          <button :class="{'button-loading':!level}" @click="loadData">Refresh</button>
       </div>
   </div>
 </template>
@@ -74,6 +74,10 @@ color: white;
 height: 40px;
 width: 100px;
 font-size: 14px;
+}
+
+.button-loading {
+background-color: grey;
 }
 
 </style>
