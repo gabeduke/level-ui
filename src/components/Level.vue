@@ -78,7 +78,6 @@ font-size: 14px;
 
 .button-loading {
 background-color: grey;
-color: grey;
 }
 
 </style>
