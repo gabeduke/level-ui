@@ -92,4 +92,8 @@ width: 100px;
 font-size: 14px;
 }
 
+.button-loading {
+background-color: grey;
+}
+
 </style>
