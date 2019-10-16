@@ -40,18 +40,10 @@ export default {
             this.$store.commit('setStations', val)
         },
         loadStations() {
-            const base_url = 'https://water.weather.gov/ahps/get_map_points.php';
-            var url = ( process.env.VUE_APP_PROXY === undefined) ? base_url : process.env.VUE_APP_PROXY + base_url ;
+            const url = 'https://level-6y4rumxsfq-uc.a.run.app/api/v1/stations';
 
             axios
-            .post(url,
-                'key=akq&fcst_type=obs&current_type=all',
-                {
-                    headers: {
-                        'Accept': '*/*',
-                    },
-                }
-            )
+            .get(url)
             .then(response => (this.setStations(response.data.points)))
         }
     },
