@@ -1,18 +1,23 @@
 <template>
   <div id="app">
+    <Stations/>
     <Level/>
   </div>
 </template>
 
 <script>
 import Level from './components/Level.vue'
+import Stations from './components/Stations.vue'
+
 
 export default {
   name: 'app',
   components: {
-    Level
+    Level,
+    Stations,
   }
 }
+
 </script>
 
 <style>

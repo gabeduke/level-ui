@@ -1,7 +1,7 @@
 <template>
   <div class="level-app">
       <div class="level-image">
-          <img v-bind:src="image" :key="imageKey">
+          <img v-bind:src="station">
       </div>
 
       <div class="level-info">
@@ -10,7 +10,6 @@
               <p v-show="!level">Fetching level..</p>
               <p v-show="level">{{ level }}</p>
           </div>
-          <button @click="loadData">Refresh</button>
       </div>
   </div>
 </template>
@@ -20,25 +19,42 @@ import axios from 'axios';
 
 export default {
     name: 'Level',
+    computed: {
+        station () {
+            var url = 'https://water.weather.gov/resources/hydrographs/' + this.$store.state.station.lid + '_hg.png'
+            return url
+        },
+        level_url () {
+            var url = 'https://level-6y4rumxsfq-uc.a.run.app/api/v1/level?station=' + this.$store.state.station.lid
+            return url
+        },
+        store() {
+            return this.$store.state
+        }
+    },
     data () {
         return {
             level: null,
-            image: 'https://water.weather.gov/resources/hydrographs/rmdv2_hg.png',
-            imageKey: 0,
         }
+    },
+    created() {
+        this.loadData()
+        this.$store.subscribe( (mutation) => {
+        if (mutation.type === 'setStation') {
+            this.loadData()
+        }
+        })
     },
     methods: {
         loadData() {
+
             this.level = null,
-            this.imageKey += 1,
+
             axios
-            .get('https://level-6y4rumxsfq-uc.a.run.app/api/v1/level')
+            .get(this.level_url)
             .then(response => (this.level = response.data.reading))
-        }
+        },
     },
-    mounted () {
-        this.loadData();
-    }
 }
 </script>
 
