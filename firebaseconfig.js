@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-  apiKey: process.env.VUE_APP_APIKEY,
+  apiKey: "AIzaSyAW6JqpSnJB9_WWNpxjyirq5Ltq9tOoo3o",
   authDomain: "leetapp-979bf.firebaseapp.com",
   databaseURL: "https://leetapp-979bf.firebaseio.com",
   projectId: "leetapp-979bf",
