@@ -1,18 +1,14 @@
 <template>
   <div id="app">
-    <Level/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Level from './components/Level.vue'
-
 export default {
   name: 'app',
-  components: {
-    Level
-  }
 }
+
 </script>
 
 <style>
