@@ -1,3 +1,5 @@
+![https://gitpod.io/#https://github.com/gabeduke/level-ui](https://img.shields.io/badge/Gitpod-Open%20in%20Gitpod-%230092CF.svg)
+
 # Level-ui
 
 Level-ui is the front end for the level project: https://level.leetserve.com/
