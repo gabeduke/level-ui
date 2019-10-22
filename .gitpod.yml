@@ -1,8 +1,6 @@
 tasks:
-  - init: yarn install
-    command: yarn install
-  - command: yarn serve
-# Ports to expose on workspace startup (optional)
+  - init: serve
+    command: yarn install && yarn serve
 ports:
   - port: 8080
     onOpen: open-preview
