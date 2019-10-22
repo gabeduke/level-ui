@@ -13,6 +13,10 @@ This project is built using the following technologies:
 
 * The API is written in GoLang and is hosted in [CloudRun](https://cloud.google.com/run/) which is a fully managed Kubernetes environment
 
+## Architecture
+
+![Architecture](.github/Level.png)
+
 ## Project setup
 
 You will need to install the [Yarn](https://yarnpkg.com/lang/en/) package manager in order to fetch javascript dependencies. Once installed you may run the following commands to serve locally or build a release artifact.
