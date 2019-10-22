@@ -1,21 +1,12 @@
 <template>
   <div id="app">
-    <Stations/>
-    <Level/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Level from './components/Level.vue'
-import Stations from './components/Stations.vue'
-
-
 export default {
   name: 'app',
-  components: {
-    Level,
-    Stations,
-  }
 }
 
 </script>
