@@ -24,6 +24,8 @@ jobs:
         with:
           name: dist
           path: dist
+        env:
+          VUE_APP_APIKEY: ${{ secrets.FIREBASE_APIKEY }}
   deploy:
     name: Deploy
     needs: build
