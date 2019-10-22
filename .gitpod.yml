@@ -1,6 +1,6 @@
 tasks:
-  - init: serve
-    command: yarn install && yarn serve
+  - init: yarn install
+    command: yarn serve
 ports:
   - port: 8080
     onOpen: open-preview
