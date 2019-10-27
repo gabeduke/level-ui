@@ -1,8 +1,8 @@
-name: Test
+name: Lint
 on: [push]
 jobs:
-  test:
-    name: Test
+  build:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -11,4 +11,4 @@ jobs:
           cmd: install
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: test
+          cmd: lint

@@ -1,3 +1,7 @@
+![](https://github.com/gabeduke/level-ui/workflows/Lint/badge.svg)
+![](https://github.com/gabeduke/level-ui/workflows/Test/badge.svg)
+![](https://github.com/gabeduke/level-ui/workflows/Deploy/badge.svg)
+
 # Level-ui
 
 Level-ui is the front end for the level project: https://level.leetserve.com/
