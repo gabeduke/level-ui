@@ -11,6 +11,7 @@ import 'vue-select/dist/vue-select.css';
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './registerServiceWorker'
 
 
 const firebaseConfig = {
