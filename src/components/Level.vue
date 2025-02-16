@@ -1,8 +1,7 @@
-<!-- src/components/Level.vue -->
 <template>
-    <div class="level-app">
-      <div class="level-image">
-        <img :src="stationImgUrl" alt="Hydrograph">
+    <div class="level-container d-flex flex-wrap align-items-center">
+      <div class="level-image me-3">
+        <img :src="stationImgUrl" alt="Hydrograph" />
       </div>
       <div class="level-info">
         <h1>Level</h1>
@@ -15,24 +14,28 @@
   </template>
   
   <script setup>
-  import { ref, computed, onMounted } from 'vue'
+  import { ref, computed, onMounted, watch } from 'vue'
   import { useStore } from 'vuex'
   import axios from 'axios'
   
   const store = useStore()
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://level-6y4rumxsfq-uc.a.run.app'
+  const baseUrl = computed(() => store.state.apiBaseUrl)
   
-  // Compute stationId from the station's points array.
-  const stationId = computed(() => {
-    return (store.state.station &&
-            store.state.station.points &&
-            store.state.station.points.length > 0)
-           ? store.state.station.points[0].lid
-           : ''
-  })
-  
-  const levelUrl = computed(() => `${baseUrl}/api/v1/level?station=${stationId.value}`)
+  // Compute stationId using the normalized station's usgsId.
+  const stationId = computed(() =>
+    store.state.station && store.state.station.usgsId ? store.state.station.usgsId : ''
+  )
+  const levelUrl = computed(() => `${baseUrl.value}/api/v1/level?station=${stationId.value}`)
   const level = ref(null)
+  
+  // Use nwsId for the hydrograph image URL if available; otherwise use usgsId.
+  const stationImgUrl = computed(() => {
+    const station = store.state.station
+    if (station) {
+      return `https://water.weather.gov/resources/hydrographs/${station.nwsId}_hg.png`
+    }
+    return ''
+  })
   
   const loadLevel = async () => {
     try {
@@ -46,4 +49,26 @@
   onMounted(() => {
     loadLevel()
   })
+  
+  watch(() => store.state.station, () => {
+    loadLevel()
+  })
   </script>
+  
+  <style scoped>
+  .level-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .level-image {
+    max-width: 300px;
+  }
+  .level-image img {
+    width: 100%;
+    border: 1px solid #d8d8d8;
+    box-shadow: 0px 0.5px 1px #d8d8d8;
+  }
+  .level-info {
+    flex: 1;
+  }
+  </style>
