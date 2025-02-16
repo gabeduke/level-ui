@@ -55,5 +55,8 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "engines": {
+    "yarn": ">=1.22.22"
+  }
 }

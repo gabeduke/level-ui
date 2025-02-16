@@ -31,6 +31,7 @@ This project is built using the following technologies:
 
 You will need to install the [Yarn](https://yarnpkg.com/lang/en/) package manager in order to fetch javascript dependencies. Once installed you may run the following commands to serve locally or build a release artifact.
 
+**Note:** This project requires Yarn version `>=1.22.22`.
 
 ```
 yarn install
@@ -50,3 +51,18 @@ yarn build
 ```
 yarn lint
 ```
+
+## Docker Setup
+
+To support localhost development against a Docker image running the server, follow these steps:
+
+1. Ensure you have Docker and Docker Compose installed on your machine.
+2. Build the Docker image:
+   ```
+   docker-compose build
+   ```
+3. Start the Docker container:
+   ```
+   docker-compose up
+   ```
+4. Access the application at `http://localhost:8080`.
