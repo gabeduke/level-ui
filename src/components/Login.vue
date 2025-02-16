@@ -1,41 +1,39 @@
+<!-- src/components/Login.vue -->
 <template>
     <section>
-        <navigation></navigation>
-        <h5 class="center-align">Login</h5>
-        <section id="firebaseui-auth-container"></section>
+      <NavBar />
+      <h5 class="center-align">Login</h5>
+      <section id="firebaseui-auth-container"></section>
     </section>
-</template>
-
-<script>
-import navigation from "@/components/NavBar.vue";
-import firebase from "firebase";
-import * as firebaseui from "firebaseui";
-import "firebaseui/dist/firebaseui.css";
-export default {
-    name: "Login",
-    data() {
-        return {};
-    },
-    components: {
-        navigation
-    },
-    mounted() {
-        let ui = firebaseui.auth.AuthUI.getInstance();
-        if (!ui) {
-            ui = new firebaseui.auth.AuthUI(firebase.auth());
-        }
-        var uiConfig = {
-            signInSuccessUrl: "/profile", // This redirect can be achived by route using callback.
-            signInFlow: "popup",
-            signInOptions: [
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.EmailAuthProvider.PROVIDER_ID
-            ]
-        };
-        ui.start("#firebaseui-auth-container", uiConfig);
+  </template>
+  
+  <script setup>
+  import { onMounted } from 'vue'
+  import NavBar from '@/components/NavBar.vue'
+  import { getAuth } from 'firebase/auth'
+  import * as firebaseui from 'firebaseui'
+  import 'firebaseui/dist/firebaseui.css'
+  
+  const auth = getAuth()
+  
+  onMounted(() => {
+    let ui = firebaseui.auth.AuthUI.getInstance()
+    if (!ui) {
+      ui = new firebaseui.auth.AuthUI(auth)
     }
-};
-</script>
-
-<style>
-</style>
+    const uiConfig = {
+      signInSuccessUrl: '/profile',
+      signInFlow: 'popup',
+      signInOptions: [
+        // FirebaseUI for v9: use provider IDs (these remain strings)
+        'google.com',
+        'password'
+      ]
+    }
+    ui.start('#firebaseui-auth-container', uiConfig)
+  })
+  </script>
+  
+  <style scoped>
+  /* Your styles */
+  </style>

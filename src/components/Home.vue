@@ -1,29 +1,24 @@
 <template>
-    <section>
-        <navigation></navigation>
-        <h5 class="center-align">Home</h5>
+  <b-container fluid>
+    <b-row>
+      <!-- Left column: Level display -->
+      <b-col cols="12" lg="8">
+        <Level />
+      </b-col>
 
-        <Stations/>
-        <Level/>
-    </section>
+      <!-- Right column: Stations (filter and list) -->
+      <b-col cols="12" lg="4">
+        <Stations />
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
-<script>
-import navigation from "@/components/NavBar.vue";
+<script setup>
 import Level from '@/components/Level.vue'
 import Stations from '@/components/Stations.vue'
-
-export default {
-    data() {
-        return {};
-    },
-    components: {
-        navigation,
-        Level,
-        Stations,
-    }
-};
 </script>
 
-<style>
+<style scoped>
+/* You can add any additional styling for Home.vue here */
 </style>

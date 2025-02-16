@@ -1,14 +1,12 @@
+<!-- src/App.vue -->
 <template>
   <div id="app">
     <router-view />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app',
-}
-
+<script setup>
+// No additional logic needed here for now.
 </script>
 
 <style>

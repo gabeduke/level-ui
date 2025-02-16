@@ -1,19 +1,25 @@
+// src/main.js
+import { createApp } from 'vue'
 import App from './App.vue'
-import store from './store'
 import router from './router'
+import store from './store'
 
-import Vue from 'vue'
-import firebase from 'firebase'
-import { firestorePlugin } from 'vuefire'
+// Firebase v9 modular
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
 
-import vSelect from 'vue-select'
-import 'vue-select/dist/vue-select.css';
-import BootstrapVue from 'bootstrap-vue'
+// VueFire for Vue 3
+import { VueFire, VueFireAuth } from 'vuefire'
+
+// BootstrapVue 3 (community version)
+import BootstrapVue3 from 'bootstrap-vue-3'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+
+// Service Worker registration (if you need it)
 import './registerServiceWorker'
 
-
+// Your firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAW6JqpSnJB9_WWNpxjyirq5Ltq9tOoo3o",
   authDomain: "leetapp-979bf.firebaseapp.com",
@@ -22,19 +28,18 @@ const firebaseConfig = {
   storageBucket: "leetapp-979bf.appspot.com",
   messagingSenderId: "157484514902",
   appId: "1:157484514902:web:251f0bb25cb50cdeca45f7"
-};
+}
 
-firebase.initializeApp(firebaseConfig)
+const firebaseApp = initializeApp(firebaseConfig)
+const auth = getAuth(firebaseApp)
 
-Vue.use(firestorePlugin)
-Vue.use(BootstrapVue)
+const app = createApp(App)
+app.use(router)
+app.use(store)
+app.use(VueFire, {
+  firebaseApp,
+  modules: [VueFireAuth()]
+})
+app.use(BootstrapVue3)
 
-Vue.component('v-select', vSelect)
-
-Vue.config.productionTip = false
-
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+app.mount('#app')
