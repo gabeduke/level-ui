@@ -1,29 +1,19 @@
+<!-- src/components/Home.vue -->
 <template>
     <section>
-        <navigation></navigation>
-        <h5 class="center-align">Home</h5>
-
-        <Stations/>
-        <Level/>
+      <NavBar />
+      <h5 class="center-align">Home</h5>
+      <Stations />
+      <Level />
     </section>
-</template>
-
-<script>
-import navigation from "@/components/NavBar.vue";
-import Level from '@/components/Level.vue'
-import Stations from '@/components/Stations.vue'
-
-export default {
-    data() {
-        return {};
-    },
-    components: {
-        navigation,
-        Level,
-        Stations,
-    }
-};
-</script>
-
-<style>
-</style>
+  </template>
+  
+  <script setup>
+  import NavBar from '@/components/NavBar.vue'
+  import Level from '@/components/Level.vue'
+  import Stations from '@/components/Stations.vue'
+  </script>
+  
+  <style scoped>
+  /* Your Home.vue styles */
+  </style>

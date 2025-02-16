@@ -1,15 +1,11 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
+// src/store/index.js
+import { createStore } from 'vuex'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+// store/index.js
+export default createStore({
   state: {
     stations: [],
-    station: {
-        lid: "rmdv2",
-        name: "James River (VA) at Richmond-Westham"
-    }
+    station: {}
   },
   mutations: {
     setStation(state, newStation) {
@@ -18,5 +14,5 @@ export default new Vuex.Store({
     setStations(state, stationsList) {
       state.stations = stationsList
     }
-  },
+  }
 })
